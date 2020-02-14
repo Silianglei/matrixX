@@ -13,24 +13,42 @@ import math
 #the template in the top comment
 def print_matrix( matrix ):
     s = ""
-    for c in range(3):
+    for c in range(4):
         s += "\n"
-        for r in range(4):
-            if matrix[c][r] != None:
-                s += str(matrix[c][r])
-                s += " "
-    s += "\n1 1 1 1"
+        for r in range(len(matrix)):
+            s += str(matrix[c][r])
+            s += " "
+    s += "\n"
     print(s)
 
 #turn the paramter matrix into an identity matrix
 #you may assume matrix is square
 def ident( matrix ):
-    matrix = new_matrix()
+    columns = len(matrix)
+    rows = columns #matrix is assumed to be a square
+    for r in range(rows):
+        for c in range(columns):
+            if (r == c):
+                matrix[r][c] = 1
+            else:
+                matrix[r][c] = 0
+    return matrix
 
 #multiply m1 by m2, modifying m2 to be the product
 #m1 * m2 -> m2
+
+
+def dot_product( m1 , m2):
+
+
+
 def matrix_mult( m1, m2 ):
-    pass
+    m2_clone = m2
+    columns = len(m2)
+    for r in range(4):
+        for c in range(columns):
+            m2[r][c] = (m1[r][1] * m2[1][c])
+
 
 
 
@@ -42,3 +60,9 @@ def new_matrix(rows = 4, cols = 4):
         for r in range( rows ):
             m[c].append( 0 )
     return m
+
+def new_1D_matrix(){
+    m = []
+    for i in range(3):
+    m.append
+}
