@@ -13,13 +13,27 @@ import math
 #the template in the top comment
 def print_matrix( matrix ):
     s = ""
+    current_spaces = 7
     for c in range(4):
         s += "\n"
         for r in range(len(matrix)):
             s += str(matrix[r][c])
-            s += " "
+            # if current_spaces < how_manyDigits(matrix[r][c]):
+            #     current_spaces += 1
+            for i in range(current_spaces - how_manyDigits(matrix[r][c])):
+                s += " "
     s += "\n"
     print(s)
+
+def how_manyDigits(n):
+    if (n == 0):
+        return 1
+    i = 0
+    number_of_digits = 0
+    for i in range(10):
+        if (10 ** i) <= n:
+            number_of_digits += 1
+    return number_of_digits
 
     # for rows in matrix:
     #     print(rows)
