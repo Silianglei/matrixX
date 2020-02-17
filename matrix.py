@@ -16,15 +16,18 @@ def print_matrix( matrix ):
     for c in range(4):
         s += "\n"
         for r in range(len(matrix)):
-            s += str(matrix[c][r])
+            s += str(matrix[r][c])
             s += " "
     s += "\n"
     print(s)
 
+    # for rows in matrix:
+    #     print(rows)
+
 #turn the paramter matrix into an identity matrix
 #you may assume matrix is square
 def ident( matrix ):
-    columns = len(matrix)
+    columns = len(matrix[0])
     rows = columns #matrix is assumed to be a square
     for r in range(rows):
         for c in range(columns):
@@ -38,19 +41,16 @@ def ident( matrix ):
 #m1 * m2 -> m2
 
 
-def dot_product( m1 , m2):
-
-
-
 def matrix_mult( m1, m2 ):
-    m2_clone = m2
-    columns = len(m2)
+    m2_clone = new_matrix()
+    columns = len(m2[0])
     for r in range(4):
         for c in range(columns):
-            m2[r][c] = (m1[r][1] * m2[1][c])
-
-
-
+            m2_clone[r][c] = m2[r][c]
+    for r in range(4):
+        for c in range(columns):
+            m2[r][c] = (m1[r][0] * m2_clone[0][c]) + (m1[r][1] * m2_clone[1][c]) + (m1[r][2] * m2_clone[2][c]) + (m1[r][3] * m2_clone[3][c])
+    return m2
 
 
 def new_matrix(rows = 4, cols = 4):
@@ -60,9 +60,3 @@ def new_matrix(rows = 4, cols = 4):
         for r in range( rows ):
             m[c].append( 0 )
     return m
-
-def new_1D_matrix(){
-    m = []
-    for i in range(3):
-    m.append
-}
