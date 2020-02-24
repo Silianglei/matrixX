@@ -12,11 +12,11 @@ def draw_lines( matrix, screen, color ):
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
     matrix.append([x0,y0,z0,1])
     matrix.append([x1,y1,z1,1])
-    return matrix
+
 
 def add_point( matrix, x, y, z=0 ):
     matrix.append([x,y,z,1])
-    return matrix
+
 
 
 

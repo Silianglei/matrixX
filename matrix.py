@@ -13,8 +13,8 @@ import math
 #the template in the top comment
 def print_matrix( matrix ):
     s = ""
-    current_spaces = 7
-    for c in range(4):
+    current_spaces = 5
+    for c in range(len(matrix[0])):
         s += "\n"
         for r in range(len(matrix)):
             s += str(matrix[r][c])
@@ -56,15 +56,15 @@ def ident( matrix ):
 
 
 def matrix_mult( m1, m2 ):
-    m2_clone = new_matrix()
-    columns = len(m2[0])
-    for r in range(4):
-        for c in range(columns):
-            m2_clone[r][c] = m2[r][c]
-    for r in range(4):
-        for c in range(columns):
-            m2[r][c] = (m1[r][0] * m2_clone[0][c]) + (m1[r][1] * m2_clone[1][c]) + (m1[r][2] * m2_clone[2][c]) + (m1[r][3] * m2_clone[3][c])
-    return m2
+    rows = len(m1[0])
+    columns = len(m2)
+    temp = new_matrix(rows, columns)
+    for row in range(rows):
+        for col in range(columns):
+            temp[col][row] = sum([(m1[k][row] * m2[col][k]) for k in range(len(m2[0]))])
+    del m2[:]
+    for col in temp:
+        m2.append(col)
 
 
 def new_matrix(rows = 4, cols = 4):
